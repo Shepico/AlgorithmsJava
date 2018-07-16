@@ -49,4 +49,35 @@ public class ArrayClassMy {
     public boolean binarySearch (int elem) {
         return false;
     }
+
+    //Sort
+    public void sortBubble() {
+        for (int i=this.size-1; i>=1; i--) {
+            for (int j=0; j<i; j++) {
+                if (this.data[j]>this.data[j+1]){
+                    change(j,j+1);
+                }
+            }
+        }
+    }
+
+    public void sortSelect(){
+        int mark;
+        for (int i=0; i < this.size; i++) {
+            mark = i;
+            for (int j=i+1; j < this.size; j++) {
+                if (this.data[j]<this.data[mark]){
+                    mark = j;
+                }
+            }
+            change (i, mark);
+        }
+
+    }
+
+    private void change (int idx1, int idx2) {
+        int tmp = this.data[idx1];
+        this.data[idx1] = this.data[idx2];
+        this.data[idx2] = tmp;
+    }
 }
