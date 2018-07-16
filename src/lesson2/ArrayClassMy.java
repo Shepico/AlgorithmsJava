@@ -72,7 +72,14 @@ public class ArrayClassMy {
             }
             change (i, mark);
         }
+    }
 
+    public void sortInsert(){
+        for (int i=1; i<this.size; i++) {
+            for (int j=0; j<this.size; j++) {
+
+            }
+        }
     }
 
     private void change (int idx1, int idx2) {
