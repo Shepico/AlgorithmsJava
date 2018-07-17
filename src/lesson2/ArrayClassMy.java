@@ -1,5 +1,8 @@
 package lesson2;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class ArrayClassMy {
     private int[] data;
     private int size;
@@ -7,6 +10,16 @@ public class ArrayClassMy {
     public ArrayClassMy (int size) {
         this.size = 0;
         this.data = new int[size];
+    }
+
+    public ArrayClassMy (int[] arr) {
+        this.size=0;
+        Arrays.copyOf(arr, arr.length);
+        this.data = arr;
+    }
+
+    public int[] getArray() {
+        return this.data;
     }
 
     public int getSize() {
@@ -20,6 +33,13 @@ public class ArrayClassMy {
     public void addElement (int elem){
         this.data[size] = elem;
         this.size++;
+    }
+
+    public void fillArray(int size) {
+        Random  rand = new Random();
+        for (int i=0; i<size; i++) {
+            addElement(rand.nextInt(999));
+        }
     }
 
     public void insertElement(int index, int elem) {
@@ -47,6 +67,19 @@ public class ArrayClassMy {
     }
 
     public boolean binarySearch (int elem) {
+        int low=0;
+        int high = this.size-1;
+        int mid;
+        while (low<this.size) {
+            mid  = (low+high)/2;
+            if (elem == this.data[mid]) {
+                return true;
+            } else {
+                if (elem<this.data[mid]) {
+                    high=mid;
+                }else low=mid+1;
+            }
+        }
         return false;
     }
 
@@ -76,9 +109,13 @@ public class ArrayClassMy {
 
     public void sortInsert(){
         for (int i=1; i<this.size; i++) {
-            for (int j=0; j<this.size; j++) {
-
+            int tmp = this.data[i];
+            int j=i;
+            while (j>0 && this.data[j-1]>=tmp) {
+                this.data[j] = this.data[j-1];
+                j--;
             }
+            this.data[j]=tmp;
         }
     }
 
