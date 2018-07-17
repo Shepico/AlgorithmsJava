@@ -23,7 +23,7 @@ public class MainClass {
         long timeStart = System.nanoTime();
         arr.sortBubble();
         long timeResult = System.nanoTime()-timeStart;
-        System.out.println("sortBuble " + timeResult + " nanoseconds" );
+        System.out.println("sortBubble " + timeResult + " nanoseconds" );
         timeStart = System.nanoTime();
         arr2.sortSelect();
         timeResult = System.nanoTime()-timeStart;
