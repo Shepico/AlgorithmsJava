@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class Main {
     public static void main (String[] args) {
         //Стек тестовый пример
@@ -25,7 +23,7 @@ public class Main {
        //Стек конец*/
        //
         //Очередь тестовый пример
-        Stack que = new QueueImp(5);
+        /*Stack que = new QueueImp(5);
         //System.out.println("out - " + que.peek()); // пустая очередь
         System.out.println("is empty - " + que.isEmpty());
         que.push(5);
@@ -42,5 +40,20 @@ public class Main {
         System.out.println("is full - " + que.isFull());
         //que.push(6); // превышение размера очереди
         //Очередь конец */
+        //
+        //Очередь приоритет
+        Stack que = new QueueImp(5);
+        ((QueueImp) que).insertPriority(5);
+        ((QueueImp) que).insertPriority(3);
+        ((QueueImp) que).insertPriority(7);
+        System.out.println("out - " + que.peek());
+        que.pop();
+        System.out.println("out - " + que.peek());
+        ((QueueImp) que).insertPriority(2);
+        ((QueueImp) que).insertPriority(4);
+        ((QueueImp) que).insertPriority(6);
+        System.out.println("out - " + que.peek());
+        //Очередь приоритет конец
+
     }
 }

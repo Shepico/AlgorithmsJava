@@ -55,4 +55,23 @@ public class QueueImp implements Stack {
     public boolean isFull() {
         return this.outMark == this.sizeQue-1;
     }
+
+    //Вставка как будто очередь приоритетная
+    public void insertPriority (int value) {
+        int i;
+        if (this.outMark == -1) {
+            this.dataQue[0] = value;
+            this.outMark++;
+        }else {
+            for (i = this.outMark; i >= 0; i--){
+                if (value>this.dataQue[i]){
+                    this.dataQue[i+1] = this.dataQue[i];
+                }else break;
+            }
+            this.dataQue[i+1] = value;
+            this.outMark++;
+        }
+    }
+
+
 }
