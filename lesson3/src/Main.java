@@ -1,3 +1,4 @@
+
 public class Main {
     public static void main (String[] args) {
         //Стек тестовый пример
@@ -55,5 +56,16 @@ public class Main {
         System.out.println("out - " + que.peek());
         //Очередь приоритет конец
 
+        /*Deque dq = new Deque(5);
+        dq.insertLeftDeq(2);
+        dq.insertLeftDeq(1);
+        dq.insertLeftDeq(3);
+        dq.insertRightDeq(4);
+        dq.insertRightDeq(6);
+        dq.insertRightDeq(5); // переполнение очереди
+        dq.removeLeftDeq();
+        dq.removeRightDeq();
+        System.out.println(dq.peekLeft());
+        System.out.println(dq.peekRight());*/
     }
 }
