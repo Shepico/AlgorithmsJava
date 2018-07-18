@@ -12,10 +12,15 @@ public class ArrayClassMy {
         this.data = new int[size];
     }
 
-    public ArrayClassMy (int[] arr) {
-        this.size=0;
+    public ArrayClassMy (int[] arr, int size) {
+       //ошибка см. result
+        /*this.size=0;
         Arrays.copyOf(arr, arr.length);
-        this.data = arr;
+        this.data = arr;*/
+        //
+        this.size=size;
+        this.data = Arrays.copyOf(arr, arr.length);
+
     }
 
     public int[] getArray() {

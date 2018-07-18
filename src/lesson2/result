@@ -1,3 +1,26 @@
 sortBubble 237981039 nanoseconds
 sortSelect 8397 nanoseconds
 sortInsert 6220 nanoseconds
+////////////////////////////////////////////////////////////////////////////
+У вас имеется ошибка при копировании массивов. Вместо
+
+public ArrayClassMy (int[] arr) {
+this.size=0;
+Arrays.copyOf(arr, arr.length);
+this.data = arr;
+}
+
+нужно
+
+   public ArrayClassMy (int[] arr, int size) {
+        this.size=size;
+        this.data = Arrays.copyOf(arr, arr.length);
+    }
+Если вы посмотрите в дебаге, то увидите, что у всех объектов ArrayClassMy один и тот же адрес памяти для data,
+то есть это один и тотже массив. Метод copyOf возвращает новый массив, который и нужно присвоить data.
+Также поле size имеет 0 значение, поэтому сортировки попросту не выполняются.
+//////////////////////////////////////////////////////////////////////////
+После исправления
+sortBubble 519249029 nanoseconds
+sortSelect 280732746 nanoseconds
+sortInsert 57413532 nanoseconds

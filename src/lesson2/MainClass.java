@@ -6,8 +6,8 @@ public class MainClass {
     public static void main (String[] args) {
         ArrayClassMy arr = new ArrayClassMy(10000);
         arr.fillArray(10000);
-        ArrayClassMy arr2 = new ArrayClassMy(arr.getArray());
-        ArrayClassMy arr3 = new ArrayClassMy(arr.getArray());
+        ArrayClassMy arr2 = new ArrayClassMy(arr.getArray(), 10000);
+        ArrayClassMy arr3 = new ArrayClassMy(arr.getArray(), 10000);
         /*arr.addElement(9);
         arr.addElement(8);
         arr.addElement(7);
