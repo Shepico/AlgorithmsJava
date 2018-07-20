@@ -5,7 +5,7 @@ public class Main {
         CharString arrStr = new CharString("очередь");
         System.out.println(arrStr.coup());
 
-        CharString arrStr2 = new CharString("гриф утверждения");
-        System.out.println(arrStr2.coup());
+        CharStringStack arrStr2 = new CharStringStack("гриф утверждения");
+        arrStr2.coup();
     }
 }
