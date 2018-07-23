@@ -1,4 +1,6 @@
-public class ListOneS implements List {
+import java.util.Iterator;
+
+public class ListOneS implements List, Iterable <Integer> {
 
     ListItem first;
 
@@ -92,5 +94,14 @@ public class ListOneS implements List {
     public int deleteLast() {
         System.out.println("The method is not implemented");
         return 0;
+    }
+
+    public ListItem getFirst() {
+        return this.first;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new ListIterator(this);
     }
 }

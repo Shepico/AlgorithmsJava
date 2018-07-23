@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Main {
 
     public static void main (String[] args) {
@@ -62,5 +64,26 @@ public class Main {
         System.out.println("push - " + que.push());
         System.out.println("push - " + que.push());
         que.display();
+
+        //Итератор из Вебинара
+        System.out.println();
+        System.out.println("Итератор");
+        ListOneS listOneI = new ListOneS();
+        listOneI.insertFirst(5);
+        listOneI.insertFirst(3);
+        listOneI.insertFirst(4);
+        listOneI.insertFirst(1);
+        listOneI.insertFirst(2);
+        listOneI.insertFirst(6);
+
+        /*Iterator <Integer> iterator =  listOneI.iterator();
+        while (iterator.hasNext()) {
+            int next = iterator.next();
+            System.out.println(next);
+        }*/
+
+        for (int value: listOneI) {
+            System.out.println(value);
+        }
     }
 }
