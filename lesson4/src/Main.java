@@ -34,5 +34,33 @@ public class Main {
         listTwo.insertLast(7);
         listTwo.insertLast(1);
         listTwo.display();
+
+        //Стек
+        System.out.println();
+        System.out.println("Стек");
+        Stack stack = new Stack();
+        stack.pop(1);
+        stack.pop(2);
+        stack.pop(3);
+        stack.pop(4);
+        stack.display();
+        System.out.println("push - " + stack.push());
+        System.out.println("push - " + stack.push());
+        stack.display();
+
+        //Очередь
+        System.out.println();
+        System.out.println("Очередь");
+        Queue que = new Queue();
+        que.pop(1);
+        que.pop(2);
+        que.pop(3);
+        que.pop(4);
+        que.pop(5);
+        que.pop(6);
+        que.display();
+        System.out.println("push - " + que.push());
+        System.out.println("push - " + que.push());
+        que.display();
     }
 }
