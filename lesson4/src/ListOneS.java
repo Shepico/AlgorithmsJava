@@ -1,6 +1,6 @@
 public class ListOneS implements List {
 
-    private ListItem first;
+    ListItem first;
 
     public ListOneS() {
         first = null;
@@ -72,6 +72,7 @@ public class ListOneS implements List {
                        deleteFirst();
                    }else {
                        prevLink.setNextItem(link.getNextItem());
+                       return (link.getData());
                    }
 
                 }
