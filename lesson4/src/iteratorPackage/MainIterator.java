@@ -28,5 +28,6 @@ public class MainIterator {
         System.out.println("Current unit (nextLink and delete) - " + itr.getCurrent());
         itr.prevLink();
         System.out.println("Current unit (prevLink) - " + itr.getCurrent());
+        list.display();
     }
 }

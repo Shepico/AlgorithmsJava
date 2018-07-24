@@ -2,7 +2,7 @@ package iteratorPackage;
 
 public class IteratorImpl implements Iterator {
     private Unit linkСurrent;
-    private Unit linkPrev;
+    //private Unit linkPrev;
     private ListUnit list;
 
     IteratorImpl (ListUnit list) {
@@ -14,14 +14,14 @@ public class IteratorImpl implements Iterator {
     //перемещение в начало списка
     public void reset() {
         this.linkСurrent = list.getFirst();
-        this.linkPrev = null;
+        //this.linkPrev = null;
     }
 
     @Override
     //перемещение к следующиму итератору
     public void nextLink() {
         if (this.linkСurrent.getNext() != null) {
-            this.linkPrev = this.linkСurrent;
+            //this.linkPrev = this.linkСurrent;
             this.linkСurrent = this.linkСurrent.getNext();
         }
     }
@@ -30,8 +30,8 @@ public class IteratorImpl implements Iterator {
     //перемещение к предыдущему итератору
     public void prevLink() {
         if (this.linkСurrent.getPrev() != null) {
-            this.linkСurrent = this.linkPrev;
-            this.linkPrev = this.linkPrev.getPrev();
+            this.linkСurrent = this.linkСurrent.getPrev();
+            //this.linkPrev = this.linkPrev.getPrev();
         }
     }
 
@@ -69,13 +69,13 @@ public class IteratorImpl implements Iterator {
             this.list.setFirst(newUnit);
             this.linkСurrent = newUnit;
         } else {
-            if (this.linkPrev == null) {
+            if (this.linkСurrent.getPrev() == null) {
                 newUnit.setLink(this.list.getFirst(), null);
                 this.list.setFirst(newUnit);
                 this.reset();
             } else {
-                newUnit.setLink(this.linkPrev.getNext(), this.linkPrev);
-                this.linkPrev.setLink(newUnit, this.linkPrev.getPrev());
+                newUnit.setLink(this.linkСurrent.getPrev().getNext(), this.linkСurrent.getPrev());
+                this.linkСurrent.getPrev().setLink(newUnit, this.linkСurrent.getPrev().getPrev());
                 this.linkСurrent.setLink(this.linkСurrent.getNext(),newUnit);
                 this.linkСurrent = newUnit;
             }
@@ -86,11 +86,12 @@ public class IteratorImpl implements Iterator {
     //удаление текущего элемента
     public String deleteCurrent() {
         String strUnit = this.linkСurrent.toString();
-        if (this.linkPrev == null) {
+        if (this.linkСurrent.getPrev() == null) {
             this.list.setFirst(this.linkСurrent.getNext());
             this.reset();
         }else {
-            this.linkPrev.setLink(this.linkСurrent.getNext(), null);
+            this.linkСurrent.getPrev().setLink(this.linkСurrent.getNext(), this.linkСurrent.getPrev().getPrev());
+            this.linkСurrent.getNext().setLink(this.linkСurrent.getNext().getNext(),this.linkСurrent.getPrev());
             if (this.atEnd()){
                 this.reset();
             }else {
