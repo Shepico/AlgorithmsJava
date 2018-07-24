@@ -2,10 +2,11 @@ package iteratorPackage;
 
 public interface Iterator {
     void reset();
-    Unit nextLink();
+    void nextLink();
+    void prevLink();
     Unit getCurrent();
     boolean atEnd();
-    void insertAfter();
-    void inserBefore();
-    Unit deleteCurren();
+    void insertAfter(String one, String two);
+    void insertBefore(String one, String two);
+    String deleteCurrent();
 }

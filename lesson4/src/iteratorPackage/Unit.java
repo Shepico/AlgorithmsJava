@@ -18,10 +18,12 @@ class Unit{
     }
 
     Unit getNext() {
-        return (this.next);
+
+        return this.next;
     }
 
     Unit getPrev() {
+
         return (this.prev);
     }
 
@@ -30,11 +32,16 @@ class Unit{
         this.prev = prev;
     }
 
+    void display(String str) {
+        System.out.println(str);
+    }
+
     @Override
     public String toString(){
         return ("UNIT [name-" + this.name
                 + ",surname-" + this.surname
-                + ",null"
-                + ",null]");
+                + "]");
+                /*+ ", " + this.getNext()
+                + ", " + this.getPrev() + "]");*/
     }
 }
