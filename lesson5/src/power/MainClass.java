@@ -1,4 +1,6 @@
-public class MainClass {
+package power;
+
+ class MainClass {
 
     public static void main (String[] args){
 
