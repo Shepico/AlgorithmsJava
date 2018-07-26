@@ -16,4 +16,8 @@ import java.util.ArrayList;
     void setKit(Thing elem) {
         this.set.add(elem);
     }
+
+    /*Kit selectionThing(Thing t...){
+
+    }*/
 }

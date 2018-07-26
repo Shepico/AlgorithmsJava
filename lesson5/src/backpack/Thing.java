@@ -18,5 +18,13 @@ package backpack;
         return (this.name + " [" + "Weight=" + this.weight + " Cost=" + this.cost + "]");
     }
 
+    int getCost(){
+        return this.cost;
+    }
+
+    int getWeight() {
+        return this.weight;
+     }
+
 
 }
