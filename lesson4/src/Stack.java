@@ -1,6 +1,6 @@
-public class Stack extends ListOneS {
+class Stack extends ListOneS {
 
-    public Stack (){
+    public Stack(){
         super();
     }
 
