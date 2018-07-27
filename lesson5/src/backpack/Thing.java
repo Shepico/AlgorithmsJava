@@ -24,7 +24,9 @@ package backpack;
 
     int getWeight() {
         return this.weight;
-     }
+    }
+
+
 
 
 
