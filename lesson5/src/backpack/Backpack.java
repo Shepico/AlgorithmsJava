@@ -27,7 +27,7 @@ class Backpack {
         set.remove(current);
     }
 
-    void pickupThing (Thing[] arr, int i, int j, int cw, int cc, ArrayList<Thing> cArr, ArrayList<Thing> mArr) {
+   void pickupThing2 (Thing[] arr, int cw, int cc, ArrayList<Thing> cArr, ArrayList<Thing> mArr) {
         int maxC = 0;
         int maxW = 0;
         for (int a = 0; a < arr.length; a++) {
@@ -78,7 +78,7 @@ class Backpack {
         System.out.println("max weight" + maxW);
 
         for (Thing t:mArr) {
-            System.out.println(t);
+            this.addThing(t);
         }
 
         //тут работает
