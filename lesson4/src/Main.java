@@ -1,8 +1,8 @@
 import java.util.Iterator;
 
-public class Main {
+ class Main {
 
-    public static void main (String[] args) {
+     static void main (String[] args) {
         //Односторонний список
         System.out.println("Односторонний список");
         List listOne = new ListOneS();
