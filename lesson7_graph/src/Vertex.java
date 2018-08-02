@@ -38,4 +38,12 @@ class Vertex {
             System.out.print(this.edge);
         }*/
     }
+
+    @Override
+    public String toString(){
+        return ("" +this.label);
+    }
+
+
+
 }
