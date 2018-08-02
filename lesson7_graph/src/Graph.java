@@ -37,7 +37,7 @@ class Graph {
         }
     }
 
-    void bypassDeph() {
+    /*void bypassDeph() {
         Vertex firstVertex = vertexList.get(0); //Взяли первую вершину
         if (firstVertex == null) {
             System.out.println("Граф пустой");
@@ -48,33 +48,64 @@ class Graph {
             firstVertex.changeWasVisited();
 
         }
-    }
+    }*/
 
-    void bypassWidth() {
-        Vertex currentV = vertexList.get(0); //Взяли первую вершину
-        //LinkedHashSet currentEdge = currentV.getEdge();
-        currentV.changeWasVisited();
-        currentV.displayVertex();
-        Queue<Vertex> queue = new ArrayDeque<>();
+    void bypassWidth(int index) {
+        Vertex current = vertexList.get(index); //
+        LinkedHashSet<Vertex> currentEdge = current.getEdge();
+        System.out.println(current);
+        current.changeWasVisited();
+        //Stack<Vertex> stack = new Stack();
+        //displayEdge(currentEdge);
+        bypassWidth(currentEdge);
+
+
+      /*  Queue<Vertex> queue = new ArrayDeque<>();
         queue.add(currentV);
 
         while (!queue.isEmpty()) {
             /*System.out.println(((ArrayDeque<Vertex>) queue).getFirst());
-            ((ArrayDeque<Vertex>) queue).removeFirst();*/
+            ((ArrayDeque<Vertex>) queue).removeFirst();
             currentV = queue.remove();
             Vertex current = null;
-          /*  while ((current = getAdjUnvisitedVertex(currentV)) != null) {
+           while ((current = getAdjUnvisitedVertex(currentV)) != null) {
                     visit(current, queue);
                 }
             }
 
-            resetVertexStates();*/
+            resetVertexStates();
+        }*/
+
+     }
+
+    private void bypassWidth(LinkedHashSet<Vertex> currentEdge) {
+        //Vertex current = vertexList.get(index); //
+        Iterator<Vertex> iterator = currentEdge.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            LinkedHashSet<Vertex> edge = iterator.next().getEdge();
+            Iterator<Vertex> iteratorTwo = edge.iterator();
+            while (iterator.hasNext()) {
+                if (!iterator.next().getWasVisted() && iterator.next() != null) {
+                    iterator.next().changeWasVisited();
+                    System.out.println(iterator.next());
+                }
+
+                bypassWidth(edge);
+            }
+
+
         }
-
-
-
-
     }
+
+
+     private void displayEdge(LinkedHashSet<Vertex> edge){
+        Iterator<Vertex> iterator = edge.iterator();
+        while (iterator.hasNext()) {
+            //stack.push(iterator..next());
+            System.out.println(iterator.next());
+        }
+     }
 
 
 

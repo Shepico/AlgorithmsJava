@@ -35,11 +35,10 @@ public class mainLesson7 {
         //вывод графа
         //graph.displayGraph();
 
-
-
         /*DisplayGraph w;
         w = new DisplayGraph("Graph");*/
 
+        //graph.bypassWidth(0);
 
 
         /*Vertex g1 = new Vertex('A');

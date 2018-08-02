@@ -53,6 +53,7 @@ class Vertex {
     }
 
     String getLabel(){
+
         return ""+this.label;
     }
 
