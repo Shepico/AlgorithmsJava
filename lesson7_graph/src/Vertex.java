@@ -1,19 +1,19 @@
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import java.util.Set;
 class Vertex {
 
     private char label;
-    private HashSet<Vertex> edge; //не будет дубликатов
+    private LinkedHashSet<Vertex> edge; //не будет дубликатов
     private boolean wasVisited;
 
     Vertex(char label){
         this.label = label;
         this.wasVisited = false;
-        this.edge = new HashSet();
+        this.edge = new LinkedHashSet<>();
     }
 
-    void setWasVisited(){
+    void changeWasVisited(){
         this.wasVisited = !this.wasVisited;
     }
 
@@ -37,6 +37,10 @@ class Vertex {
         /*for (int i=0; i<this.edge.size(); i++){
             System.out.print(this.edge);
         }*/
+    }
+
+    LinkedHashSet getEdge() {
+        return(this.edge);
     }
 
     @Override

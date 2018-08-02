@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.LinkedHashSet;
 
 class Graph {
 
@@ -16,10 +15,10 @@ class Graph {
 
     void addEdge(int start, int ... end) {
         Vertex v = this.vertexList.get(start);
-        v.addEdge(this.getVertex(end));
+        v.addEdge(this.getVertexArray(end));
     }
 
-    Vertex[] getVertex (int ... index){
+    Vertex[] getVertexArray (int ... index){
         Vertex[] vert = new Vertex[index.length];
         for (int i=0; i<index.length; i++){
             vert[i] = this.vertexList.get(index[i]);
@@ -32,5 +31,33 @@ class Graph {
             vertexList.get(i).displayVertex();
         }
     }
+
+    void bypassWidth() {
+        Vertex currentV = vertexList.get(0); //Взяли первую вершину
+        //LinkedHashSet currentEdge = currentV.getEdge();
+        currentV.changeWasVisited();
+        currentV.displayVertex();
+        Queue<Vertex> queue = new ArrayDeque<>();
+        queue.add(currentV);
+
+        while (!queue.isEmpty()) {
+            /*System.out.println(((ArrayDeque<Vertex>) queue).getFirst());
+            ((ArrayDeque<Vertex>) queue).removeFirst();*/
+            currentV = queue.remove();
+            Vertex current = null;
+          /*  while ((current = getAdjUnvisitedVertex(currentV)) != null) {
+                    visit(current, queue);
+                }
+            }
+
+            resetVertexStates();*/
+        }
+
+
+
+
+    }
+
+
 
 }

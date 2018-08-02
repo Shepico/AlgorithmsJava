@@ -33,8 +33,9 @@ public class mainLesson7 {
         graph.addEdge(10,8);
 
         //вывод графа
-        graph.displayGraph();
+        //graph.displayGraph();
 
+        graph.bypassWidth();
 
         /*DisplayGraph w;
         w = new DisplayGraph("Graph");*/
