@@ -35,7 +35,7 @@ public class mainLesson7 {
         //вывод графа
         //graph.displayGraph();
 
-        graph.bypassWidth();
+
 
         /*DisplayGraph w;
         w = new DisplayGraph("Graph");*/
@@ -56,5 +56,38 @@ public class mainLesson7 {
         g2.displayVertex();
         g3.displayVertex();
         g4.displayVertex();*/
+
+        GraphMatrix graphMatrix = new GraphMatrix();
+        graphMatrix.addVertex('A');
+        graphMatrix.addVertex('B');
+        graphMatrix.addVertex('C');
+        graphMatrix.addVertex('D');
+        graphMatrix.addVertex('E');
+        graphMatrix.addVertex('F');
+        graphMatrix.addVertex('G');
+        graphMatrix.addVertex('H');
+        graphMatrix.addVertex('I');
+        graphMatrix.addVertex('J');
+        graphMatrix.addVertex('K');
+        graphMatrix.addVertex('L');
+
+        //Строим ребра
+        graphMatrix.addEdge(0,1);
+        graphMatrix.addEdge(0,3);
+        graphMatrix.addEdge(0,4);
+        graphMatrix.addEdge(0,5);
+        graphMatrix.addEdge(1,2);
+        graphMatrix.addEdge(3,6);
+        graphMatrix.addEdge(5,8);
+        graphMatrix.addEdge(6,7);
+        graphMatrix.addEdge(8,9);
+        graphMatrix.addEdge(8,10);
+        graphMatrix.addEdge(9,11);
+
+        //graphMatrix.displayVertex(5);
+
+        graphMatrix.bfs("A");
+
     }
+
 }

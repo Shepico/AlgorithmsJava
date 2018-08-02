@@ -43,11 +43,17 @@ class Vertex {
         return(this.edge);
     }
 
+    boolean getWasVisted() {
+        return wasVisited;
+    }
+
     @Override
     public String toString(){
         return ("" +this.label);
     }
 
-
+    String getLabel(){
+        return ""+this.label;
+    }
 
 }

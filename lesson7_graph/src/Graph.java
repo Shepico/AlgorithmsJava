@@ -5,9 +5,14 @@ class Graph {
 
     List<Vertex> vertexList;
 
+
     Graph() {
+
         vertexList = new ArrayList<>();
+
     }
+
+
 
     void addVertex(char label){
         vertexList.add(new Vertex(label));
@@ -29,6 +34,19 @@ class Graph {
     void displayGraph(){
         for (int i=0; i<this.vertexList.size(); i++){
             vertexList.get(i).displayVertex();
+        }
+    }
+
+    void bypassDeph() {
+        Vertex firstVertex = vertexList.get(0); //Взяли первую вершину
+        if (firstVertex == null) {
+            System.out.println("Граф пустой");
+        }else {
+
+            Stack<Vertex> stack = new Stack();
+            stack.push(firstVertex);
+            firstVertex.changeWasVisited();
+
         }
     }
 
