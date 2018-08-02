@@ -1,6 +1,9 @@
+import Visible.DisplayGraph;
+
 public class mainLesson7 {
 
     public static void main (String[] args){
+        //Строим граф
         Graph graph = new Graph();
         graph.addVertex('A');
         graph.addVertex('B');
@@ -15,6 +18,7 @@ public class mainLesson7 {
         graph.addVertex('K');
         graph.addVertex('L');
 
+        //Строим ребра
         graph.addEdge(0,1,3,4,5);
         graph.addEdge(1,0,2);
         graph.addEdge(2,1);
@@ -23,13 +27,17 @@ public class mainLesson7 {
         graph.addEdge(7,6);
         graph.addEdge(4,0);
         graph.addEdge(5,0,8);
-
         graph.addEdge(8,5,9,10);
         graph.addEdge(9,8,11);
         graph.addEdge(11,9);
         graph.addEdge(10,8);
 
+        //вывод графа
         graph.displayGraph();
+
+
+        /*DisplayGraph w;
+        w = new DisplayGraph("Graph");*/
 
 
 
