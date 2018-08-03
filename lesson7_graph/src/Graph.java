@@ -1,112 +1,106 @@
-import java.util.*;
-import java.util.LinkedHashSet;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
-class Graph {
-
-    List<Vertex> vertexList;
-
+public class Graph {
+    private final int MAX_VERTS = 10;
+    private Vertex[] graph;
+    private int[][] adjVer;
+    private int size;
 
     Graph() {
-
-        vertexList = new ArrayList<>();
-
-    }
-
-
-
-    void addVertex(char label){
-        vertexList.add(new Vertex(label));
-    }
-
-    void addEdge(int start, int ... end) {
-        Vertex v = this.vertexList.get(start);
-        v.addEdge(this.getVertexArray(end));
-    }
-
-    Vertex[] getVertexArray (int ... index){
-        Vertex[] vert = new Vertex[index.length];
-        for (int i=0; i<index.length; i++){
-            vert[i] = this.vertexList.get(index[i]);
-        }
-        return vert;
-    }
-
-    void displayGraph(){
-        for (int i=0; i<this.vertexList.size(); i++){
-            vertexList.get(i).displayVertex();
+        graph = new Vertex[MAX_VERTS];
+        adjVer = new int[MAX_VERTS][MAX_VERTS];
+        size = 0;
+        for (int i = 0; i < adjVer.length; i++) {
+            for (int j = 0; j < adjVer.length; j++) {
+                adjVer[i][j] = 0;
+            }
         }
     }
 
-    /*void bypassDeph() {
-        Vertex firstVertex = vertexList.get(0); //Взяли первую вершину
-        if (firstVertex == null) {
-            System.out.println("Граф пустой");
-        }else {
+    void addVertex(String label) {
+        graph[size++] = new Vertex(label);
+    }
 
-            Stack<Vertex> stack = new Stack();
-            stack.push(firstVertex);
-            firstVertex.changeWasVisited();
-
+    void addEdge (int start, int end) {
+        adjVer[start][end] = 1;
+        adjVer[end][start] = 1;
+    }
+//////////////////////////////////////////////////////////
+    public void bfs(String startVertexLabel) {
+        Vertex vertex = find(startVertexLabel);
+        if (vertex == null) {
+            return;
         }
-    }*/
 
-    void bypassWidth(int index) {
-        Vertex current = vertexList.get(index); //
-        LinkedHashSet<Vertex> currentEdge = current.getEdge();
-        System.out.println(current);
-        current.changeWasVisited();
-        //Stack<Vertex> stack = new Stack();
-        //displayEdge(currentEdge);
-        bypassWidth(currentEdge);
-
-
-      /*  Queue<Vertex> queue = new ArrayDeque<>();
-        queue.add(currentV);
+        Queue<Vertex> queue = new ArrayDeque();
+        visit(vertex, queue);
 
         while (!queue.isEmpty()) {
-            /*System.out.println(((ArrayDeque<Vertex>) queue).getFirst());
-            ((ArrayDeque<Vertex>) queue).removeFirst();
-            currentV = queue.remove();
-            Vertex current = null;
-           while ((current = getAdjUnvisitedVertex(currentV)) != null) {
-                    visit(current, queue);
-                }
+            vertex = queue.remove();
+            Vertex currentVertex = null;
+            while ((currentVertex = getAdjUnvisitedVertex(vertex)) != null) {
+                visit(currentVertex, queue);
             }
-
-            resetVertexStates();
-        }*/
-
-     }
-
-    private void bypassWidth(LinkedHashSet<Vertex> currentEdge) {
-        //Vertex current = vertexList.get(index); //
-        Iterator<Vertex> iterator = currentEdge.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-            LinkedHashSet<Vertex> edge = iterator.next().getEdge();
-            Iterator<Vertex> iteratorTwo = edge.iterator();
-            while (iterator.hasNext()) {
-                if (!iterator.next().getWasVisted() && iterator.next() != null) {
-                    iterator.next().changeWasVisited();
-                    System.out.println(iterator.next());
-                }
-
-                bypassWidth(edge);
-            }
-
-
         }
     }
-
-
-     private void displayEdge(LinkedHashSet<Vertex> edge){
-        Iterator<Vertex> iterator = edge.iterator();
-        while (iterator.hasNext()) {
-            //stack.push(iterator..next());
-            System.out.println(iterator.next());
+    public Vertex find(String label) {
+        for (int i = 0; i < graph.length; i++) {
+            if (graph[i] == null) {
+                continue;
+            }
+            String vertexLabel = graph[i].getLabel();
+            if (vertexLabel.equals(label)) {
+                return graph[i];
+            }
         }
-     }
+        return null;
+    }
 
+    private Vertex getAdjUnvisitedVertex(Vertex vertex) {
+        for (int i = 0; i < graph.length; i++) {
+            Vertex currentVertex = graph[i];
+            if (hasEdge(vertex, currentVertex) && !currentVertex.isWasVisited()) {
+                return currentVertex;
+            }
+        }
 
+        return null;
+    }
 
+    private boolean hasEdge(Vertex from, Vertex to) {
+        return hasEdge(from.getLabel(), to.getLabel());
+    }
+
+    private boolean hasEdge(String fromLabel, String toLabel) {
+        int from = indexOf(fromLabel);
+        int to = indexOf(toLabel);
+        if (from == -1 || to == -1)
+            return false;
+
+        return adjVer[from][to] == 1;
+    }
+
+    public int indexOf(String label) {
+        for (int index = 0; index < graph.length; index++) {
+            if (graph[index] == null) {
+                continue;
+            }
+            String vertexLabel = graph[index].getLabel();
+            if (vertexLabel.equals(label)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private void visit(Vertex vertex, Queue<Vertex> queue) {
+        display(vertex);
+        vertex.setWasVisitet();
+        queue.add(vertex);
+    }
+
+    private void display(Vertex vertex) {
+        System.out.println(vertex);
+    }
 }

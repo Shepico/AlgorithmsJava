@@ -1,60 +1,33 @@
-import java.util.LinkedHashSet;
+public class Vertex {
 
-import java.util.Set;
-class Vertex {
-
-    private char label;
-    private LinkedHashSet<Vertex> edge; //не будет дубликатов
+    private String label;
     private boolean wasVisited;
+    private Vertex prev;
 
-    Vertex(char label){
+    Vertex (String label) {
         this.label = label;
-        this.wasVisited = false;
-        this.edge = new LinkedHashSet<>();
+        wasVisited = false;
+        prev = null;
     }
 
-    void changeWasVisited(){
-        this.wasVisited = !this.wasVisited;
+    void setWasVisitet() {
+        this.wasVisited = true;
     }
 
     void resetWasVisited() {
         this.wasVisited = false;
     }
 
-    void addEdge(Vertex ... vertex) {  //т.к. не понятно со сколькими вершинами есть связь
-        for (int i=0; i<vertex.length; i++){
-            this.edge.add(vertex[i]);
-        }
+    public String getLabel() {
+        return label;
     }
 
-    void removeEdge(Vertex vertex) {
-        this.edge.remove(vertex);
-    }
-
-    void displayVertex(){
-        System.out.println(this.label);
-        System.out.println(this.edge);
-        /*for (int i=0; i<this.edge.size(); i++){
-            System.out.print(this.edge);
-        }*/
-    }
-
-    LinkedHashSet getEdge() {
-        return(this.edge);
-    }
-
-    boolean getWasVisted() {
+    public boolean isWasVisited() {
         return wasVisited;
     }
 
     @Override
     public String toString(){
-        return ("" +this.label);
+        return this.label;
     }
-
-    String getLabel(){
-
-        return ""+this.label;
-    }
-
 }
