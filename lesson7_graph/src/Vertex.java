@@ -30,4 +30,12 @@ public class Vertex {
     public String toString(){
         return this.label;
     }
+
+    void setPrevVertex(Vertex prev){
+        this.prev = prev;
+    }
+
+    Vertex getPrevVertex(){
+        return this.prev;
+    }
 }

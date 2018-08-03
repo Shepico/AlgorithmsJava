@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
     private final int MAX_VERTS = 10;
@@ -27,6 +28,50 @@ public class Graph {
         adjVer[end][start] = 1;
     }
 //////////////////////////////////////////////////////////
+    public void bfs(String startVertexLabel, String endVertexLabel) {
+        boolean isFind = false;
+        Vertex vertex = find(startVertexLabel);
+        if (vertex == null) {
+            return;
+        }
+
+        Queue<Vertex> queue = new ArrayDeque();
+        vertex.setWasVisitet();
+        queue.add(vertex);
+        Vertex currentVertex = null;
+        while (!queue.isEmpty() && !isFind) {
+            vertex = queue.remove();
+            currentVertex = null;
+            while ((currentVertex = getAdjUnvisitedVertex(vertex)) != null) {
+                currentVertex.setPrevVertex(vertex);
+                currentVertex.setWasVisitet();
+                queue.add(currentVertex);
+                if (currentVertex.getLabel() == endVertexLabel){
+                    isFind=true;
+                    break;
+                }
+            }
+
+        }
+        displayWay(currentVertex);
+
+    }
+
+    void displayWay(Vertex end){
+        Stack<Vertex> st = new Stack();
+        Vertex vertex = end;
+        while(vertex.getPrevVertex() != null) {
+            st.push(vertex);
+            vertex = vertex.getPrevVertex();
+        }
+        st.push(vertex);
+        for (int i=st.size()-1; i>-1; i--){
+            System.out.println(st.get(i)); // почему то pop() не верно выводит
+        }
+
+    }
+
+
     public void bfs(String startVertexLabel) {
         Vertex vertex = find(startVertexLabel);
         if (vertex == null) {
@@ -35,6 +80,7 @@ public class Graph {
 
         Queue<Vertex> queue = new ArrayDeque();
         visit(vertex, queue);
+
 
         while (!queue.isEmpty()) {
             vertex = queue.remove();

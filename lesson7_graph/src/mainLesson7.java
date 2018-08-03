@@ -27,7 +27,7 @@ public class mainLesson7 {
         graph.addEdge(7,9);
         graph.addEdge(8,9);
 
-        graph.bfs("Москва");
+        graph.bfs("Москва", "Воронеж");
 
     }
 }
