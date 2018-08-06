@@ -47,12 +47,14 @@ public class L8_Main {
         ht.add(nine);
 
         ht.display();
+        System.out.println("************************************************");
 
         System.out.println("Find - " + ht.findItem(ten));
         System.out.println("Find - " + ht.findItem(seven));
 
         System.out.println("Remove - " + ht.removeItem(nine));
         ht.add(ten);
+        System.out.println("************************************************");
 
         ht.display();
     }
