@@ -46,7 +46,7 @@ public class Graph {
                 currentVertex.setPrevVertex(vertex);
                 currentVertex.setWasVisitet();
                 queue.add(currentVertex);
-                if (currentVertex.getLabel() == endVertexLabel){
+                if (currentVertex.getLabel().equals(endVertexLabel)){ //настоятельно не рекомендую сравнивать строки на ==, нужно на equals().
                     isFind=true;
                     break;
                 }
